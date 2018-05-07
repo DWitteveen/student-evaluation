@@ -25,7 +25,6 @@ export default class BatchController {
     @Body() update: Partial<Batch>) {
         const batch = await Batch.findOneById(id)
         if (!batch) throw new NotFoundError('Batch not found')
-
         return Batch.merge(batch, update).save()
     }
 

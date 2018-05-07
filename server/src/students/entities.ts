@@ -1,5 +1,5 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
-import { MinLength, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 
 @Entity()
@@ -9,12 +9,10 @@ export default class Student extends BaseEntity {
   id?: number
 
   @IsString()
-  @MinLength(2)
   @Column('text')
   firstName: string
 
   @IsString()
-  @MinLength(2)
   @Column('text')
   lastName: string
 
