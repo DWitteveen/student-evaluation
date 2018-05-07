@@ -3,7 +3,7 @@ import { MinLength, IsString } from 'class-validator';
 
 
 @Entity()
-export class Student extends BaseEntity {
+export default class Student extends BaseEntity {
 
   @PrimaryGeneratedColumn()
   id?: number
@@ -22,7 +22,7 @@ export class Student extends BaseEntity {
   @Column('text')
   photo: string
 
-  //association between links two tables based on a Foreign Key
+  // association between links two tables based on a Foreign Key
 
   @OneToMany(_ => Student, batch => batch.student) 
   student: Student[]

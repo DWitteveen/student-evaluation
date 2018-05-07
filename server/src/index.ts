@@ -3,6 +3,8 @@ import {createKoaServer} from 'routing-controllers'
 import setupDb from './db'
 import UserController from './users/controller'
 import LoginController from './logins/controller'
+import StudentController from './students/controller'
+import BatchController from './batch/controller'
 import {Action} from 'routing-controllers'
 import {verify} from './jwt'
 
@@ -12,7 +14,9 @@ const app = createKoaServer({
     cors:true,
     controllers: [
       UserController,
-      LoginController
+      LoginController,
+      StudentController,
+      BatchController
     ],
     authorizationChecker: (action: Action) => {
         const header: string = action.request.headers.authorization
