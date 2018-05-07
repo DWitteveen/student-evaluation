@@ -8,10 +8,6 @@ export default class Batch extends BaseEntity {
   @PrimaryGeneratedColumn()
   id?: number
 
-  @IsInt()
-  @Column('int', {nullable: true})
-  batchNumber: number
-
   @IsString()
   @Column('text', {nullable: true})
   startDate: string

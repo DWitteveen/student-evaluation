@@ -11,13 +11,11 @@ export default class BatchController {
         return { batches }
     }
     
-
     @Get('/batches/:id')
     getBatch(
     @Param('id') id: number) {
         return Batch.findOneById(id)
     }
-
 
     @Put('/batches/:id')
     async updateBatch(
