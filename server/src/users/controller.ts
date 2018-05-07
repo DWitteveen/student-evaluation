@@ -1,39 +1,43 @@
-import { JsonController, Post, Param, Get, Body, Authorized } from 'routing-controllers'
-import User from './entity';
-import { io } from '../index'
+import { JsonController, Get, Param, Put, Body, NotFoundError, Post, HttpCode } from 'routing-controllers'
+import User from './entity'
 
 @JsonController()
 export default class UserController {
 
-  @Post('/users')
-  async signup(
-    @Body() data: User
-  ) {
-    const {password, ...rest} = data
-    const entity = User.create(rest)
-    await entity.setPassword(password)
+    // @Get('/users')
+    // async allUsers() {
+    //     const users = await User.find()
+    //     return { users }
+    // }
 
-    const user = await entity.save()
+    // @Get('/users/:id')
+    // getUser(
+    // @Param('id') id: number) {
+    //     return User.findOne(id)
+    // }
 
-    io.emit('action', {
-      type: 'ADD_USER',
-      payload: entity
-    })
 
-    return user
-  }
+    // @Put('/users/:id')
+    // async updateUser(
+    // @Param('id') id: number,
+    // @Body() update: Partial<User>) {
+    //     const user = await User.findOne(id)
+    //     if (!user) throw new NotFoundError('Cannot find user')
+        
+    //     return User.merge(user, update).save()
+    // }
 
-  @Authorized()
-  @Get('/users/:id([0-9]+)')
-  getUser(
-    @Param('id') id: number
-  ) {
-    return User.findOneById(id)
-  }
 
-  @Authorized()
-  @Get('/users')
-  allUsers() {
-    return User.find()
-  }
+    @Post('/users')
+    @HttpCode(201)
+    async createUser(
+    @Body() user: User) {
+        const {password, ...rest} = user
+        const entity = User.create(rest)
+        console.log(entity)
+        await entity.setPassword(password)
+        console.log(entity, 'again')
+        return entity.save()
+    }
 }
+       
