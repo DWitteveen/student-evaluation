@@ -11,7 +11,7 @@ yarn start for client side
 -docker start some-postgres
 get all the game information for database
 
-http :4000/user/1
+http :4000/users/1
 http :4000/evaluations/1  
 http :4000/batches/1
 http :4000/students/1

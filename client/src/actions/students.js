@@ -1,15 +1,19 @@
 import * as request from 'superagent'
-import {baseUrl} from '../constants'
+import { baseUrl } from '../constants'
 
-export const GET_STUDENT_BY_ID = 'GET_STUDENT_BY_ID'
 
-export const getStudent = (studentId) => (dispatch) => {
+export const GET_STUDENTS = "GET_STUDENTS"
 
-    request
-    .get('${baseUrl}/students/:id')
-    .then(result => dispatch({
-        type: GET_STUDENT_BY_ID,
-        payload: result.body
+
+export const getStudents = () => (dispatch, getState) => {
+  
+  request
+    .get(`${baseUrl}/students/`)
+    .then(response => dispatch({
+      type: GET_STUDENTS,
+      payload: response.body.students
     }))
-    .catch(err => alert(err))
+    .catch(err => console.log(err))
+
 }
+
