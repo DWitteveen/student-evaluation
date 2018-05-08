@@ -6,9 +6,6 @@ import Batch from '../batch/entities'
 @Entity()
 export default class Student extends BaseEntity {
 
-  
-  batch: any;
-  evaluation: any;
   @PrimaryGeneratedColumn()
   id?: number
 
@@ -26,11 +23,11 @@ export default class Student extends BaseEntity {
 
   // association between links two tables based on a Foreign Key
 
-  @OneToMany(_ => Evaluation, evaluation => evaluation.student) 
-  student: Student[]
-  
-  @ManyToOne(_ => Batch, batch => batch.studentsbatch)
-  studentbatch: Student
+  @ManyToOne(_ => Batch, batch => batch.students)
+  batch: Batch
+
+  @OneToMany(_ => Evaluation, evaluation => evaluation.student)
+  evaluations: Evaluation[]
 
 }
 

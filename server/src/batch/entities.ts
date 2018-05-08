@@ -6,6 +6,7 @@ import Student  from '../students/entities'
 @Entity()
 export default class Batch extends BaseEntity {
 
+  student: any;
   @PrimaryGeneratedColumn()
   id?: number
 
@@ -20,8 +21,7 @@ export default class Batch extends BaseEntity {
    // association between links two tables based on a Foreign Key
 
   @OneToMany(_ => Student, student => student.batch)
-  studentsbatch: Student[]
-
+  students: Student[]
 }
 
 

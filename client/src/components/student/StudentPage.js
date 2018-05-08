@@ -37,16 +37,20 @@ class StudentPage extends PureComponent {
                 <TableCell >First Name</TableCell>
                 <TableCell >Last Name</TableCell>
                 <TableCell >Profile Picture</TableCell>
+                <TableCell >Evaluation</TableCell>
                 <TableCell >Batch Number</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>     
-              {students.map(batch => {
+              {students.map(student => {
                 return (
-                  <TableRow key={students.id}>
-                      <TableCell>{students.id}</TableCell>
-                      <TableCell>{students.firstName}</TableCell>
-                      <TableCell>{students.lastName}</TableCell>
+                  <TableRow key={student.id}>
+                      <TableCell>{student.id}</TableCell>
+                      <TableCell>{student.firstName}</TableCell>
+                      <TableCell>{student.lastName}</TableCell>
+                      <TableCell className="failSample"> <img src={student.photo} alt="" height={60}/>  </TableCell>
+                      <TableCell>{student.evaluation}</TableCell>
+                      <TableCell>{student.batch_id}</TableCell>
                   </TableRow>
                  )
               })}
