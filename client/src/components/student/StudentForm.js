@@ -15,14 +15,13 @@ const styles = theme => ({
       width: 200,
     },
   });
+  
 class StudentForm extends PureComponent {
-
 	state = {}
 
 	handleSubmit = (e) => {
     e.preventDefault()
-		this.props.onSubmit(this.state)
-
+        this.props.onSubmit(this.state)
 	}
 
 	handleChange = (event) => {
@@ -46,14 +45,13 @@ class StudentForm extends PureComponent {
                     <TextField
                         id="firstName"
                         name="firstName"
-                        label="first"
+                        label="FirstName"
                         type="text"
                         margin="normal"
                         className={classes.TextField}
                         value={
                             this.state.firstName || ''
-                        }
-                        onChange={ this.handleChange.bind(this) }
+                        } onChange={ this.handleChange}
                         
                         required
                     />
@@ -64,14 +62,13 @@ class StudentForm extends PureComponent {
                     <TextField
                         id="lastName"
                         name="lastName"
-                        label="last"
+                        label="Lastname"
                         type="text"
                         margin="normal"
                         className={classes.TextField}
                         value={
                             this.state.lastName || ''
-                        }
-                        onChange={ this.handleChange.bind(this) }
+                        } onChange={ this.handleChange}
                         
                         required
                     />
@@ -80,7 +77,7 @@ class StudentForm extends PureComponent {
                 <div className="upload">
                    
                     <TextField
-                    accept="image/*"
+                    accept="image"
                     id="photo"
                     label="Photo"
                     type="file"
@@ -89,11 +86,7 @@ class StudentForm extends PureComponent {
                     className={classes.TextField}
                     value={
                         this.state.photo || ''
-                    }
-                    onChange={this.handleChange.bind(this)}
-                    InputLabelProps={{
-                        shrink: true,
-                        }}
+                    } onChange={this.handleChange}
                     />
                 </div>
                 
