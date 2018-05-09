@@ -1,11 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
 import { IsString } from 'class-validator'
-import Student  from '../students/entities'
+// import Student  from '../students/entities'
 
 @Entity()
 export default class Batch extends BaseEntity {
 
+  
   student: any;
   @PrimaryGeneratedColumn()
   id?: number
@@ -20,8 +21,8 @@ export default class Batch extends BaseEntity {
 
    // association between links two tables based on a Foreign Key
 
-  @OneToMany(_ => Student, student => student.batch)
-  students: Student[]
+//   @OneToMany(_ => Student, student => student.batch)
+//   students: Student[]
+// }
+
 }
-
-

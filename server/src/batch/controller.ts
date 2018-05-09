@@ -1,4 +1,4 @@
-import { JsonController, Get, Param, Put, Body, NotFoundError, Delete } from 'routing-controllers'
+import { JsonController, Get, Param, Put, Body, NotFoundError, Delete, Post, HttpCode } from 'routing-controllers'
 import Batch from './entities'
 
 @JsonController()
@@ -24,6 +24,14 @@ export default class BatchController {
         const batch = await Batch.findOneById(id)
         if (!batch) throw new NotFoundError('Batch not found')
         return Batch.merge(batch, update).save()
+    }
+
+    @Post('/batches')
+    @HttpCode(201)
+    async createBatch(
+    @Body() batch: Batch) {
+        
+        return batch.save()
     }
 
     @Delete('/batches/:id')

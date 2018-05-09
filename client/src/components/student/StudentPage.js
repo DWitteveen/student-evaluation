@@ -1,9 +1,10 @@
-import React, {PureComponent} from 'react';
-import Paper from 'material-ui/Paper';
+import React, {PureComponent} from 'react'
+import Paper from 'material-ui/Paper'
 import { connect } from 'react-redux'
-import {getStudents } from '../../actions/students'
+import {getStudents, addStudent } from '../../actions/students'
 import { withStyles } from 'material-ui/styles';
-import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
+import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table'
+import StudentForm from './StudentForm'
 
 
 const styles = {
@@ -22,13 +23,17 @@ class StudentPage extends PureComponent {
   componentWillMount() {
 		this.props.getStudents()
     }
+  
+  addStudent = (student) => {
+    this.props.addStudent(student)
+  }
  
   
   render() {
     const { students } = this.props;
      return (
       <div>
-        <h1>Students</h1>  
+        <StudentForm onSubmit={this.addStudent}/>  
         <Paper>
           <Table>
             <TableHead>
@@ -37,8 +42,8 @@ class StudentPage extends PureComponent {
                 <TableCell >First Name</TableCell>
                 <TableCell >Last Name</TableCell>
                 <TableCell >Profile Picture</TableCell>
-                <TableCell >Evaluation</TableCell>
-                <TableCell >Batch Number</TableCell>
+                {/* <TableCell >Evaluation</TableCell>
+                <TableCell >Batch Number</TableCell> */}
               </TableRow>
             </TableHead>
             <TableBody>     
@@ -48,9 +53,9 @@ class StudentPage extends PureComponent {
                       <TableCell>{student.id}</TableCell>
                       <TableCell>{student.firstName}</TableCell>
                       <TableCell>{student.lastName}</TableCell>
-                      <TableCell className="failSample"> <img src={student.photo} alt="" height={60}/>  </TableCell>
-                      <TableCell>{student.evaluation}</TableCell>
-                      <TableCell>{student.batch_id}</TableCell>
+                      <TableCell className="studentphoto"> <img src={student.photo} alt="" height={60}/>  </TableCell>
+                      {/* <TableCell>{student.evaluation}</TableCell>
+                      <TableCell>{student.batchId}</TableCell> */}
                   </TableRow>
                  )
               })}
@@ -69,4 +74,4 @@ const mapStateToProps = function (state) {
 }
 
 
-export default withStyles(styles)(connect(mapStateToProps, {getStudents})(StudentPage));
+export default withStyles(styles)(connect(mapStateToProps, {getStudents, addStudent})(StudentPage));

@@ -27,8 +27,8 @@ export default class Evaluation extends BaseEntity {
 
      // association between links two tables based on a Foreign Key
 
-    @ManyToOne(_ => Student, student => student.evaluations)
-    students: Student
+    // @ManyToOne(_ => Student, student => student.evaluations)
+    // students: Student
    
 }
 

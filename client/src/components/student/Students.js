@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react'
 import StudentPage from './StudentPage'
-import StudentForm from './StudentForm'
+// import StudentForm from './StudentForm'
 
 
 export default class Students extends PureComponent {
@@ -9,7 +9,7 @@ export default class Students extends PureComponent {
 
 		return (
 			<div>
-                <StudentForm />
+                {/* <StudentForm /> */}
                 <StudentPage />
 			</div>
 		)

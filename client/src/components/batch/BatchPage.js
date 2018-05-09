@@ -1,9 +1,11 @@
 import React, {PureComponent} from 'react';
 import Paper from 'material-ui/Paper';
 import { connect } from 'react-redux'
-import {getBatches } from '../../actions/batches'
+import {getBatches, addBatch } from '../../actions/batches'
 import { withStyles } from 'material-ui/styles';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
+import BatchForm from './BatchForm';
+import {Link} from 'react-router-dom'
 
 
 const styles = {
@@ -22,13 +24,17 @@ class BatchPage extends PureComponent {
   componentWillMount() {
 		this.props.getBatches()
     }
+  
+  addBatch = (batch) => {
+    this.props.addBatch(batch)
+  }
  
   
   render() {
     const { batches } = this.props;
      return (
       <div>
-        <h1>Batches</h1>  
+        <BatchForm onSubmit={this.addBatch}/> 
         <Paper>
           <Table>
             <TableHead>
@@ -42,7 +48,7 @@ class BatchPage extends PureComponent {
               {batches.map(batch => {
                 return (
                   <TableRow key={batch.id}>
-                      <TableCell>{batch.id}</TableCell>
+                      <TableCell><Link to={ `/batches/${batch.id}` }>{batch.id}</Link></TableCell>
                       <TableCell>{batch.startDate}</TableCell>
                       <TableCell>{batch.endDate}</TableCell>
                   </TableRow>
@@ -63,4 +69,4 @@ const mapStateToProps = function (state) {
 }
 
 
-export default withStyles(styles)(connect(mapStateToProps, {getBatches })(BatchPage));
+export default withStyles(styles)(connect(mapStateToProps, {getBatches, addBatch })(BatchPage));

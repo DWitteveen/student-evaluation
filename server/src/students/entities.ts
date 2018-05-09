@@ -23,11 +23,11 @@ export default class Student extends BaseEntity {
 
   // association between links two tables based on a Foreign Key
 
-  @ManyToOne(_ => Batch, batch => batch.students)
-  batch: Batch
+  // @ManyToOne(_ => Batch, batch => batch.students)
+  // batch: Batch
 
-  @OneToMany(_ => Evaluation, evaluation => evaluation.student)
-  evaluations: Evaluation[]
+  // @OneToMany(_ => Evaluation, evaluation => evaluation.student)
+  // evaluations: Evaluation[]
 
 }
 

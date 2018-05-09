@@ -1,23 +1,27 @@
 import React, {PureComponent} from 'react'
-import TextField from 'material-ui/TextField';
-import Button from 'material-ui/Button';
-import { withStyles } from 'material-ui/styles';
+import TextField from 'material-ui/TextField'
+import Button from 'material-ui/Button'
+import { withStyles } from 'material-ui/styles'
+ 
 
-const styles = {
-    propContainer: {
+const styles = theme => ({
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      width: 162,
+    },
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
       width: 200,
-      overflow: 'hidden',
-      margin: '20px auto 0',
     },
-    propToggleHeader: {
-      margin: '20px auto 10px',
-    },
-  };
+  });
 class BatchForm extends PureComponent {
-	state = {}
+  	state = {}
 
-	handleSubmit = (event) => {
-    event.preventDefault()
+
+	handleSubmit = (e) => {
+    e.preventDefault()
 		this.props.onSubmit(this.state)
 
 	}
@@ -34,30 +38,13 @@ class BatchForm extends PureComponent {
 	render() {
         const {classes} = this.props
 		return (
-       
-            
+
+
 			<form onSubmit={this.handleSubmit}>
-            
+
                 <h1>Add Batch</h1>
                 <div>
-                    
-                    <TextField
-                        id="batchNumber"
-                        name="batchNumber"
-                        label="Batch Number"
-                        type="text"
-                        margin="normal"
-                        className={classes.TextField}
-                        value={
-                            this.state.id || ''
-                        } onChange={ this.handleChange.bind(this) }
-                        
-                        // required
-                    />
-                </div>
-            
-                <div>
-                    
+
                     <TextField
                         id="startDate"
                         name="startDate"
@@ -67,16 +54,17 @@ class BatchForm extends PureComponent {
                         className={classes.container}
                         value={
                             this.state.startDate || ''
-                        } onChange={ this.handleChange.bind(this) }
+                        }
+                        onChange={ this.handleChange }
                         InputLabelProps={{
                             shrink: true,
                             }}
                         required
                     />
                 </div>
-                
+
                 <div>
-                    
+
                     <TextField
                         id="endDate"
                         name="endDate"
@@ -86,19 +74,20 @@ class BatchForm extends PureComponent {
                         className={classes.container}
                         value={
                             this.state.endDate || ''
-                        } onChange={ this.handleChange.bind(this) }
+                        }
+                        onChange={ this.handleChange }
                         InputLabelProps={{
                             shrink: true,
                             }}
                         required
                     />
                 </div>
-                
+
                 <div>
                     <Button variant="raised" type="submit"> Submit </Button>
                 </div>
 			</form>
-            
+
 		)
 	}
 }

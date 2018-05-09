@@ -5,9 +5,9 @@ import { withStyles } from 'material-ui/styles'
 
 const styles = theme => ({
     container: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      width: 162,
+        borderRadius: 4,
+        borderWidth: 0.5,
+        borderColor: '#d6d7da',
     },
     textField: {
       marginLeft: theme.spacing.unit,
@@ -74,14 +74,14 @@ class StudentForm extends PureComponent {
                     />
                 </div>
 
-                <div className="upload">
+                <div >
                    
                     <TextField
                     accept="image"
                     id="photo"
-                    label="Photo"
-                    type="file"
                     name="photo"
+                    label="Photo url"
+                    type="url"
                     margin="normal"
                     className={classes.TextField}
                     value={

@@ -21,7 +21,7 @@ export const getStudents = () => (dispatch, getState) => {
 export const addStudent = (student) => (dispatch, getState) => {
   
   request
-  .post(`${baseUrl}/students`)
+  .post(`${baseUrl}/students/`)
   .send(student)
   .then(response => dispatch({
     type: ADD_STUDENT,
