@@ -15,13 +15,15 @@ const styles = theme => ({
       width: 200,
     },
   });
-  
-class StudentForm extends PureComponent {
-	state = {}
+
+class EvaluationForm extends PureComponent {
+  	state = {}
+
 
 	handleSubmit = (e) => {
     e.preventDefault()
-        this.props.onSubmit(this.state)
+		this.props.onSubmit(this.state)
+
 	}
 
 	handleChange = (event) => {
@@ -35,63 +37,32 @@ class StudentForm extends PureComponent {
 
 	render() {
         const {classes} = this.props
-        
-		return (         
+		return (
+
+
 			<form onSubmit={this.handleSubmit}>
-            
-                <h1>Add Student</h1>
+
+                <h1>Add Evaluation</h1>
                 <div>
-                    
+
                     <TextField
-                        id="firstName"
-                        name="firstName"
-                        label="FirstName"
+                        id="student"
+                        name="student"
+                        label="Student"
                         type="text"
                         margin="normal"
                         className={classes.TextField}
                         value={
-                            this.state.firstName || ''
-                        } onChange={ this.handleChange}
-                        
+                            this.state.student || ''
+                        }
+                        onChange={ this.handleChange }
+                      
                         required
                     />
                 </div>
 
                 <div>
-                    
-                    <TextField
-                        id="lastName"
-                        name="lastName"
-                        label="Lastname"
-                        type="text"
-                        margin="normal"
-                        className={classes.TextField}
-                        value={
-                            this.state.lastName || ''
-                        } onChange={ this.handleChange}
-                        
-                        required
-                    />
-                </div>
 
-                <div >
-                   
-                    <TextField
-                        accept="image"
-                        id="photo"
-                        name="photo"
-                        label="Photo url"
-                        type="url"
-                        margin="normal"
-                        className={classes.TextField}
-                        value={
-                            this.state.photo || ''
-                        } onChange={this.handleChange}
-                    />
-                </div>
-
-                <div>
-                    
                     <TextField
                         id="batch"
                         name="batch"
@@ -101,19 +72,61 @@ class StudentForm extends PureComponent {
                         className={classes.TextField}
                         value={
                             this.state.batch || ''
-                        } onChange={ this.handleChange}
+                        }
+                        onChange={ this.handleChange }
                         
                         required
                     />
+                    
                 </div>
-                
+
+                <div>
+
+                    <TextField
+                        id="evaluation"
+                        name="evaluation"
+                        label="Evaluation"
+                        type="text"
+                        margin="normal"
+                        className={classes.TextField}
+                        value={
+                            this.state.evaluation || ''
+                        }
+                        onChange={ this.handleChange }
+                       
+                        required
+                    />
+
+                </div>
+
+                <div>    
+
+                    <TextField
+                        id="date"
+                        name="date"
+                        label="Date"
+                        type="date"
+                        margin="normal"
+                        className={classes.container}
+                        value={
+                            this.state.date || ''
+                        }
+                        onChange={ this.handleChange }
+                        InputLabelProps={{shrink: true,}}
+                        
+                        required
+                    />
+
+                    </div>
+
+
                 <div>
                     <Button variant="raised" type="submit"> Submit </Button>
                 </div>
 			</form>
-            
+
 		)
 	}
 }
 
-export default withStyles(styles)(StudentForm);
+export default withStyles(styles)(EvaluationForm);

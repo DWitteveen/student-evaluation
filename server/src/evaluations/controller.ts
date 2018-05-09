@@ -4,6 +4,12 @@ import Evaluation from './entities'
 @JsonController()
 export default class EvaluationController {
 
+    @Get('/evaluations')
+    async allEvaluations() {
+        const evaluations = await Evaluation.find()
+        return { evaluations }
+    }
+
     @Get('/evaluations/:id')
     getEvaluation(
         @Param('id') id: number) {
@@ -11,11 +17,11 @@ export default class EvaluationController {
         }
     
     @Post('/evaluations')
-    async createStudent(
+    async createStudent(    
         @Body() evaluation: Evaluation
     ) {
-        const entity = await evaluation.save()
-        return entity.save()
+        return await evaluation.save()
+    
     }
 
     @Delete('/evaluations/:id')

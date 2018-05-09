@@ -7,6 +7,7 @@ import Batches from './components/batch/Batches'
 import './App.css'
 import TopBar from './components/layout/TopBar'
 import Students from './components/student/Students'
+import Evaluations from './components/evaluation/Evaluations'
 
 
 class App extends Component {
@@ -21,8 +22,12 @@ class App extends Component {
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/logout" component={LogoutPage} />
             <Route exact path="/signup" component={SignupPage} />
-            <Route exact path="/batches" component={Batches} />
             <Route exact path="/batches" component={Students} />
+            <br />
+            <Route exact path="/batches" component={Evaluations} />
+            <br />
+            <Route exact path="/batches" component={Batches} />
+            
             <Route exact path="/" render={ () => <Redirect to="/batches" /> } />
           </main>
         </div>

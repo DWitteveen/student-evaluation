@@ -1,10 +1,13 @@
 import React, {PureComponent} from 'react'
 import Paper from 'material-ui/Paper'
 import { connect } from 'react-redux'
-import {getStudents, addStudent } from '../../actions/students'
+import {getStudents, addStudent, deleteStudent } from '../../actions/students'
 import { withStyles } from 'material-ui/styles';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table'
 import StudentForm from './StudentForm'
+import {Link} from 'react-router-dom'
+import Button from 'material-ui/Button'
+
 
 
 const styles = {
@@ -13,6 +16,7 @@ const styles = {
     overflow: 'hidden',
     margin: '20px auto 0',
   },
+  
   propToggleHeader: {
     margin: '20px auto 10px',
   },
@@ -26,6 +30,10 @@ class StudentPage extends PureComponent {
   
   addStudent = (student) => {
     this.props.addStudent(student)
+  }
+
+  deleteStudent = (studentId) => {
+    this.props.deleteStudent(studentId)
   }
  
   
@@ -42,8 +50,8 @@ class StudentPage extends PureComponent {
                 <TableCell >First Name</TableCell>
                 <TableCell >Last Name</TableCell>
                 <TableCell >Profile Picture</TableCell>
-                {/* <TableCell >Evaluation</TableCell>
-                <TableCell >Batch Number</TableCell> */}
+                <TableCell >Evaluation</TableCell>
+                <TableCell >Batch Number</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>     
@@ -51,11 +59,15 @@ class StudentPage extends PureComponent {
                 return (
                   <TableRow key={student.id}>
                       <TableCell>{student.id}</TableCell>
-                      <TableCell>{student.firstName}</TableCell>
+                      <TableCell><Link to={ `/students/${student.firstName}` }>{student.firstName}</Link></TableCell>
                       <TableCell>{student.lastName}</TableCell>
                       <TableCell className="studentphoto"> <img src={student.photo} alt="" height={60}/>  </TableCell>
-                      {/* <TableCell>{student.evaluation}</TableCell>
-                      <TableCell>{student.batchId}</TableCell> */}
+                      <TableCell>
+                      <Button
+                        size="small"
+                        variant="raised"
+                        onClick={ () => this.deleteStudent(student.id) }
+                        > Delete </Button></TableCell> 
                   </TableRow>
                  )
               })}
@@ -74,4 +86,4 @@ const mapStateToProps = function (state) {
 }
 
 
-export default withStyles(styles)(connect(mapStateToProps, {getStudents, addStudent})(StudentPage));
+export default withStyles(styles)(connect(mapStateToProps, {getStudents, addStudent, deleteStudent})(StudentPage));

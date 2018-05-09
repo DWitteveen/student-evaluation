@@ -21,6 +21,10 @@ export default class Student extends BaseEntity {
   @Column('text')
   photo: string
 
+  @IsString()
+  @Column('text')
+  batch: string
+
   // association between links two tables based on a Foreign Key
 
   // @ManyToOne(_ => Batch, batch => batch.students)

@@ -9,11 +9,11 @@ export default class Evaluation extends BaseEntity {
     @PrimaryGeneratedColumn()
     id?: number
   
-    @IsInt()
+    
     @Column('int', { nullable: true })
     student: number
   
-    @IsInt()
+    
     @Column('int', { nullable: true })
     batch: number
   
