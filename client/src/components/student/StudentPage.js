@@ -50,8 +50,8 @@ class StudentPage extends PureComponent {
                 <TableCell >First Name</TableCell>
                 <TableCell >Last Name</TableCell>
                 <TableCell >Profile Picture</TableCell>
-                <TableCell >Evaluation</TableCell>
                 <TableCell >Batch Number</TableCell>
+                <TableCell >Evaluation</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>     
@@ -62,6 +62,8 @@ class StudentPage extends PureComponent {
                       <TableCell><Link to={ `/students/${student.firstName}` }>{student.firstName}</Link></TableCell>
                       <TableCell>{student.lastName}</TableCell>
                       <TableCell className="studentphoto"> <img src={student.photo} alt="" height={60}/>  </TableCell>
+                      <TableCell>{student.batch}</TableCell>
+                      <TableCell></TableCell>
                       <TableCell>
                       <Button
                         size="small"
