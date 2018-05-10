@@ -9,6 +9,7 @@ import TopBar from './components/layout/TopBar'
 import Students from './components/student/Students'
 import Evaluations from './components/evaluation/Evaluations'
 import Questions from './components/functionality/Questions'
+import StudentOverview from './components/student/StudentOverview'
 
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
             <Route exact path="/logout" component={LogoutPage} />
             <Route exact path="/signup" component={SignupPage} />
             <Route exact path="/batches" component={Students} />
+            <Route exact path="/batches/:id" component={StudentOverview} />
             <br />
             <Route exact path="/batches" component={Evaluations} />
             <br />

@@ -2,6 +2,10 @@ import React, {PureComponent} from 'react'
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
 import { withStyles } from 'material-ui/styles'
+import { FormControl } from 'material-ui/Form';
+import Select from 'material-ui/Select';
+import { InputLabel } from 'material-ui/Input';
+
 
 const styles = theme => ({
     container: {
@@ -80,7 +84,7 @@ class EvaluationForm extends PureComponent {
                     
                 </div>
 
-                <div>
+                 {/* <div>
 
                     <TextField
                         id="evaluation"
@@ -93,9 +97,31 @@ class EvaluationForm extends PureComponent {
                             this.state.evaluation || ''
                         }
                         onChange={ this.handleChange }
-                       
+                    
                         required
                     />
+
+                    </div> */}
+
+                <div>
+
+                    <FormControl className={classes.formControl}>
+                    <InputLabel>Color</InputLabel>
+                    <Select
+                        id="evaluation"
+                        name="evaluation"
+                        native
+                        value={
+                            this.state.evaluation
+                        }
+                        onChange={this.handleChange}
+                    >
+                        <option value="" />
+                        <option value='green'>Green</option>
+                        <option value='yellow'>Yellow</option>
+                        <option value='red'>Red</option>
+                    </Select>
+                    </FormControl>
 
                 </div>
 

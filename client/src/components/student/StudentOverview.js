@@ -1,56 +1,92 @@
-import { withStyles } from 'material-ui/styles';
-// import Grid from 'material-ui/Grid';
-import { connect } from 'react-redux'
-import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList'
-import { FormLabel, FormControlLabel } from 'material-ui/Form';
-import {Link} from 'react-router-dom'
-import Radio, { RadioGroup } from 'material-ui/Radio';
+import React, {PureComponent} from 'react'
 import Paper from 'material-ui/Paper'
-import React, { PureComponent } from 'react';
-import {getStudents } from '../../actions/students'
+import { connect } from 'react-redux'
+import {getStudents, addStudent, deleteStudent } from '../../actions/students'
+import { withStyles } from 'material-ui/styles';
+import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table'
+import StudentForm from './StudentForm'
+import {Link} from 'react-router-dom'
+import Button from 'material-ui/Button'
 
 
-const styles = theme => ({
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      height: 140,
-      width: 100,
-    },
-    control: {
-      padding: theme.spacing.unit * 2,
-    },
-  });
-
-
-  class StudentOverview extends PureComponent {
-
-    componentWillMount() {
-		this.props.getStudents()
-    }
-
-    render() {
-        const { students, classes } = this.props;
-        return (
-            <GridList cellHeight={280} className={classes.gridList}>
-             { student.batch.map(student => (
-              <GridListTile key={student.id}>
-                <Link to={ `/students/${student.id}` }></Link>
-                <GridListTileBar
-                  title={student.firstName}
-                />
-              </GridListTile>
-            ))}
-          </GridList> 
-        )
-    }
-  }
-
-  const mapStateToProps = (state) => {
-    return {   
-      students: state.students,
-    }
-  }
+const styles = {
+  propContainer: {
+    width: 200,
+    overflow: 'hidden',
+    margin: '20px auto 0',
+  },
   
-  export default withStyles(styles)(connect(mapStateToProps, {getStudents})(StudentOverview));
+  propToggleHeader: {
+    margin: '20px auto 10px',
+  },
+};
+
+class StudentOverview extends PureComponent {
+
+  componentWillMount() {
+		this.props.getStudents(this.props.match.params.id)
+    }
+  
+  addStudent = (student) => {
+    this.props.addStudent(student)
+  }
+
+  deleteStudent = (studentId) => {
+    this.props.deleteStudent(studentId)
+  }
+ 
+  
+  render() {
+    const { students } = this.props;
+     return (
+      <div>
+        <Paper>
+          <Table>
+            <TableHead>
+              <TableRow >
+                <TableCell>Student ID</TableCell>
+                <TableCell >First Name</TableCell>
+                <TableCell >Last Name</TableCell>
+                <TableCell >Profile Picture</TableCell>
+                <TableCell >Batch Number</TableCell>
+                <TableCell >Evaluation</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>     
+              {students.map(student => {
+                //   if (student.batch === this.props.match.params.id
+                
+                // console.log(student.batch)
+                //    return student.batchs
+                return (
+                  <TableRow key={student.id}>
+                      <TableCell>{student.id}</TableCell>
+                      <TableCell><Link to={ `/students/${student.firstName}` }>{student.firstName}</Link></TableCell>
+                      <TableCell>{student.lastName}</TableCell>
+                      <TableCell className="studentphoto"> <img src={student.photo} alt="" height={60}/>  </TableCell>
+                      <TableCell>{student.batch}</TableCell>
+                      <TableCell></TableCell>
+                      <TableCell>
+                      <Button
+                        size="small"
+                        variant="raised"
+                        onClick={ () => this.deleteStudent(student.id) }
+                        > Delete </Button></TableCell> 
+                  </TableRow>
+                 )
+              })}
+            </TableBody>
+          </Table>
+        </Paper>
+      </div>
+      )
+  }
+}
+const mapStateToProps = function (state) {
+  return {
+    students: state.students,
+  }
+}
+
+
+export default withStyles(styles)(connect(mapStateToProps, {getStudents, addStudent, deleteStudent})(StudentOverview));
