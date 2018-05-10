@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import {getStudents, addStudent, deleteStudent } from '../../actions/students'
 import { withStyles } from 'material-ui/styles';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table'
-import StudentForm from './StudentForm'
 import {Link} from 'react-router-dom'
 import Button from 'material-ui/Button'
 
