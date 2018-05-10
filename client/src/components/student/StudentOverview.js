@@ -21,6 +21,7 @@ const styles = {
   },
 };
 
+
 class StudentOverview extends PureComponent {
 
   componentWillMount() {
@@ -34,7 +35,6 @@ class StudentOverview extends PureComponent {
   deleteStudent = (studentId) => {
     this.props.deleteStudent(studentId)
   }
- 
   
   render() {
     const { students } = this.props;
@@ -53,11 +53,11 @@ class StudentOverview extends PureComponent {
               </TableRow>
             </TableHead>
             <TableBody>     
-              {students.map(student => {
-                //   if (student.batch === this.props.match.params.id
-                
+              {students.map((student) => {
+                //   if (student.batch === this.props.match.params
+                //   )
                 // console.log(student.batch)
-                //    return student.batchs
+                //    return 
                 return (
                   <TableRow key={student.id}>
                       <TableCell>{student.id}</TableCell>
