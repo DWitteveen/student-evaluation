@@ -16,6 +16,7 @@ const styles = theme => ({
       width: 200,
     },
   });
+
 class BatchForm extends PureComponent {
   	state = {}
 
@@ -56,9 +57,8 @@ class BatchForm extends PureComponent {
                             this.state.startDate || ''
                         }
                         onChange={ this.handleChange }
-                        InputLabelProps={{
-                            shrink: true,
-                            }}
+                        InputLabelProps={{shrink: true,}}
+                        
                         required
                     />
                 </div>
@@ -76,9 +76,8 @@ class BatchForm extends PureComponent {
                             this.state.endDate || ''
                         }
                         onChange={ this.handleChange }
-                        InputLabelProps={{
-                            shrink: true,
-                            }}
+                        InputLabelProps={{shrink: true,}}
+                        
                         required
                     />
                 </div>

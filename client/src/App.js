@@ -14,7 +14,8 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="App">
+          <h1 className="title">Evaluation Tool</h1>
           <nav>
             <TopBar />
           </nav>
