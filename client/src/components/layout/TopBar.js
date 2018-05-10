@@ -9,18 +9,18 @@ import {connect} from 'react-redux'
 import AccountIcon from 'material-ui-icons/AccountBox'
 
 const TopBar = (props) => {
-  const { location, history} = props
+  const { location, history, user} = props
 
   return (
-    <AppBar position="absolute" style={{zIndex:10}}>
+    <AppBar position="absolute" style={{zIndex:10, backgroundColor: '#999'}}>
       <Toolbar>
         <Typography variant="title" color="inherit" style={{flex: 1}}>
            Class Evaluations
         </Typography>
-        {/* {
+        {
           user &&
           <Button color="inherit"><AccountIcon /> { user.firstName }</Button>
-        } */}
+        }
 
         {
           location.pathname.indexOf('signup') > 0 &&

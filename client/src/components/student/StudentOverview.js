@@ -24,8 +24,10 @@ const styles = {
 
 class StudentOverview extends PureComponent {
 
+//update state before render
+
   componentWillMount() {
-		this.props.getStudents(this.props.match.params.id)
+		this.props.getStudents(this.props.match.params.batch)
     }
   
   addStudent = (student) => {
@@ -55,9 +57,8 @@ class StudentOverview extends PureComponent {
             <TableBody>     
               {students.map((student) => {
                 //   if (student.batch === this.props.match.params
-                //   )
-                // console.log(student.batch)
-                //    return 
+                //   ) return
+               //map --> filter
                 return (
                   <TableRow key={student.id}>
                       <TableCell>{student.id}</TableCell>
