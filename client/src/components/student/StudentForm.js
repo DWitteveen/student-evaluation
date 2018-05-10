@@ -2,6 +2,8 @@ import React, {PureComponent} from 'react'
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
 import { withStyles } from 'material-ui/styles'
+import {Link} from 'react-router-dom'
+
 
 const styles = theme => ({
     container: {
@@ -38,9 +40,20 @@ class StudentForm extends PureComponent {
         
 		return (         
 			<form onSubmit={this.handleSubmit}>
-            
+                <Button
+                        size="small"
+                        variant="raised"
+                        
+                        ><Link to={`/students/`}>Ask a question</Link>
+                </Button>
+                <br />
+                <br />
+                <br />
                 <h1>Add Student</h1>
                 <div>
+                
+                <br />
+                  
                     
                     <TextField
                         id="firstName"
@@ -50,7 +63,7 @@ class StudentForm extends PureComponent {
                         margin="normal"
                         className={classes.TextField}
                         value={
-                            this.state.firstName || ''
+                         this.state.firstName || ''
                         } onChange={ this.handleChange}
                         
                         required

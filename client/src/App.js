@@ -8,13 +8,14 @@ import './App.css'
 import TopBar from './components/layout/TopBar'
 import Students from './components/student/Students'
 import Evaluations from './components/evaluation/Evaluations'
+import Questions from './components/functionality/Questions'
 
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
+        <div>
           <h1 className="title">Evaluation Tool</h1>
           <nav>
             <TopBar />
@@ -28,7 +29,7 @@ class App extends Component {
             <Route exact path="/batches" component={Evaluations} />
             <br />
             <Route exact path="/batches" component={Batches} />
-            
+            <Route exact path="/students" component={Questions} />
             <Route exact path="/" render={ () => <Redirect to="/batches" /> } />
           </main>
         </div>
